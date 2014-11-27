@@ -4,28 +4,28 @@ var Amygdala = require('Amygdala');
 var Q = require('q');
 
 
-import Welcome from "./modules/Welcome";
+import ChannelControl from "./modules/ChannelControl";
 
-// var AppStore = new Amygdala({
-//     'config': {
-//       'apiUrl': 'http://rest-backend.dev',
-//       'idAttribute': 'url'
-//     },
-//     'schema': {
-//       'users': {
-//         'url': '/users/'
-//       }
-//     }
-//   }
-// );
+var AppStore = new Amygdala({
+    'config': {
+      // 'apiUrl': 'http://hdx-api.dev',
+      'apiUrl': 'http://192.168.0.22:3000',
+      'idAttribute': 'url'
+    },
+    'schema': {
+      'channel': {
+        'url': '/channel/'
+      }
+    }
+  }
+);
 
-// Q.all([
-//   TlalocStore.get("users"),
-// ]).done(makeArgFriendly(setup));
-setup();
+Q.all([
+  AppStore.get("channel"),
+]).done(makeArgFriendly(setup));
 
-function setup(userList) {
-  userList = userList || [];
+function setup(channelList) {
+  channelList = channelList || [];
 
   var App = React.createFactory(React.createClass({
     render: function() {
@@ -33,7 +33,7 @@ function setup(userList) {
         <div id="app-main">
         <div className="navbar navbar-default">
         <div className="navbar-header">
-        <a className="navbar-brand" href="./">React Frontend</a>
+        <a className="navbar-brand" href="./">HDX Controller</a>
         </div>
         </div>
 
@@ -43,7 +43,7 @@ function setup(userList) {
 
         </div>
         <div className="col-sm-9  col-md-10 main">
-        <Welcome />
+        <ChannelControl store={AppStore} />
         </div>
         </div>
         </div>

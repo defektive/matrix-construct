@@ -1,5 +1,5 @@
 {
-  "name": "react-frontend",
+  "name": "hdx-frontend",
   "version": "0.1.0",
   "description": "built with react, bootstrap, and webpack",
   "main": "src/App.js",
@@ -37,7 +37,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/defektive/react-frontend.git"
+    "url": "https://github.com/defektive/hdx-frontend.git"
   },
   "keywords": [
     "React",
@@ -47,7 +47,7 @@
   "author": "defektive<defektive@protonmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/defektive/react-frontend/issues"
+    "url": "https://github.com/defektive/hdx-frontend/issues"
   },
-  "homepage": "https://github.com/defektive/react-frontend"
+  "homepage": "https://github.com/defektive/hdx-frontend"
 }
