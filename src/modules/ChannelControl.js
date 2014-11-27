@@ -5,12 +5,15 @@ export default  React.createFactory(React.createClass({
 
 
   componentDidMount: function() {
-    $("#channel-a input[type=radio]").change(function (e){
-      this.props.store.update('channel', {'url': '/channel/A/', 'channel': {input: e.target.value}}).done(function() {  });
-    }.bind(this))
+    $("#channel-control button").click(function (e){
+      var $target = $(e.target),
+          channel = $target.data("channel"),
+          // $btn = $target.button('loading'),
+          input = $target.data("input");
 
-    $("#channel-b input[type=radio]").change(function (e){
-      this.props.store.update('channel', {'url': '/channel/B/', 'channel': {input: e.target.value}}).done(function() {  });
+      this.props.store.update('channel', {'url': '/channel/'+ channel + '/', 'channel': {input: input}}).done(function() {
+        $btn.button('reset');
+      });
     }.bind(this))
   },
 
@@ -21,41 +24,45 @@ export default  React.createFactory(React.createClass({
   render: function() {
 
     return (
-      <div>
-      <div className="row">
-        <div className="btn-group" id="channel-a" data-toggle="buttons">
-          <label className="btn btn-primary active">
-            <input type="radio" name="input-a" id="input-1" value="1" autocomplete="off" /> Input 1
-          </label>
-          <label className="btn btn-primary">
-            <input type="radio" name="input-a" id="input-2" value="2" autocomplete="off" /> Input 2
-          </label>
-          <label className="btn btn-primary">
-            <input type="radio" name="input-a" id="input-3" value="3" autocomplete="off" /> Input 3
-          </label>
-          <label className="btn btn-primary">
-            <input type="radio" name="input-a" id="input-4" value="4" autocomplete="off" /> Input 3
-          </label>
+      <div id="channel-control">
+        <div className="row">
+          <h2>Channel A</h2>
+          <button type="button" data-channel="A" data-input="1" data-loading-text="Loading..." className="btn btn-primary" autocomplete="off">
+          Input 1
+          </button>
+
+          <button type="button" data-channel="A" data-input="2" data-loading-text="Loading..." className="btn btn-primary" autocomplete="off">
+          Input 2
+          </button>
+
+          <button type="button" data-channel="A" data-input="3" data-loading-text="Loading..." className="btn btn-primary" autocomplete="off">
+          Input 3
+          </button>
+
+          <button type="button" data-channel="A" data-input="4" data-loading-text="Loading..." className="btn btn-primary" autocomplete="off">
+          Input 4
+          </button>
         </div>
-      </div>
 
 
-      <div className="row">
-        <div className="btn-group" id="channel-b" data-toggle="buttons">
-          <label className="btn btn-primary active">
-            <input type="radio" name="input-b" id="input-1" value="1" autocomplete="off" /> Input 1
-          </label>
-          <label className="btn btn-primary">
-            <input type="radio" name="input-b" id="input-2" value="2" autocomplete="off" /> Input 2
-          </label>
-          <label className="btn btn-primary">
-            <input type="radio" name="input-b" id="input-3" value="3" autocomplete="off" /> Input 3
-          </label>
-          <label className="btn btn-primary">
-            <input type="radio" name="input-b" id="input-4" value="4" autocomplete="off" /> Input 3
-          </label>
+        <div className="row">
+          <h2>Channel B</h2>
+          <button type="button" data-channel="B" data-input="1" data-loading-text="Loading..." className="btn btn-primary" autocomplete="off">
+          Input 1
+          </button>
+
+          <button type="button" data-channel="B" data-input="2" data-loading-text="Loading..." className="btn btn-primary" autocomplete="off">
+          Input 2
+          </button>
+
+          <button type="button" data-channel="B" data-input="3" data-loading-text="Loading..." className="btn btn-primary" autocomplete="off">
+          Input 3
+          </button>
+
+          <button type="button" data-channel="B" data-input="4" data-loading-text="Loading..." className="btn btn-primary" autocomplete="off">
+          Input 4
+          </button>
         </div>
-      </div>
       </div>
     );
   }
