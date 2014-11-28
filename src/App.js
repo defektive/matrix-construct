@@ -9,7 +9,7 @@ import ChannelControl from "./modules/ChannelControl";
 var AppStore = new Amygdala({
     'config': {
       // 'apiUrl': 'http://hdx-api.dev',
-      'apiUrl': '/api/',
+      'apiUrl': 'api',
       'idAttribute': 'url'
     },
     'schema': {
