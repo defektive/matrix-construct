@@ -1,6 +1,6 @@
 {
-  "name": "hdx-frontend",
-  "version": "0.1.0",
+  "name": "matrix-construct",
+  "version": "0.1.1",
   "description": "built with react, bootstrap, and webpack",
   "main": "src/App.js",
   "directories": {

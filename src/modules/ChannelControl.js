@@ -1,9 +1,38 @@
 var React = require("react/lib/reactWithAddons");
+import Channel from "./Channel";
+
+
+var testChannels = [
+  {
+    channel: 'A',
+    name: 'Living Room'
+  },
+  {
+    channel: 'B',
+    name: 'Bedroom'
+  }
+]
+
+var testInputs = [
+{
+  name: 'Cameras',
+  id: 1
+},
+{
+  name: 'Xbox',
+  id: 2
+},
+{
+  name: 'PS3',
+  id: 3
+},
+{
+  name: 'Pi',
+  id: 4
+}
+]
 
 export default  React.createFactory(React.createClass({
-
-
-
   componentDidMount: function() {
     $("#channel-control button").click(function (e){
       var $target = $(e.target),
@@ -22,47 +51,13 @@ export default  React.createFactory(React.createClass({
 
 
   render: function() {
+    var channels = testChannels.map(function (chan) {
+      return (<Channel channel={chan} inputs={testInputs}  />)
+    }.bind(this));
 
     return (
       <div id="channel-control">
-        <div className="row">
-          <h2>Channel A</h2>
-          <button type="button" data-channel="A" data-input="1" data-loading-text="Loading..." className="btn btn-primary" autocomplete="off">
-          Input 1
-          </button>
-
-          <button type="button" data-channel="A" data-input="2" data-loading-text="Loading..." className="btn btn-primary" autocomplete="off">
-          Input 2
-          </button>
-
-          <button type="button" data-channel="A" data-input="3" data-loading-text="Loading..." className="btn btn-primary" autocomplete="off">
-          Input 3
-          </button>
-
-          <button type="button" data-channel="A" data-input="4" data-loading-text="Loading..." className="btn btn-primary" autocomplete="off">
-          Input 4
-          </button>
-        </div>
-
-
-        <div className="row">
-          <h2>Channel B</h2>
-          <button type="button" data-channel="B" data-input="1" data-loading-text="Loading..." className="btn btn-primary" autocomplete="off">
-          Input 1
-          </button>
-
-          <button type="button" data-channel="B" data-input="2" data-loading-text="Loading..." className="btn btn-primary" autocomplete="off">
-          Input 2
-          </button>
-
-          <button type="button" data-channel="B" data-input="3" data-loading-text="Loading..." className="btn btn-primary" autocomplete="off">
-          Input 3
-          </button>
-
-          <button type="button" data-channel="B" data-input="4" data-loading-text="Loading..." className="btn btn-primary" autocomplete="off">
-          Input 4
-          </button>
-        </div>
+        {channels}
       </div>
     );
   }

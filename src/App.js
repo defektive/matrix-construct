@@ -15,6 +15,9 @@ var AppStore = new Amygdala({
     'schema': {
       'channel': {
         'url': '/channel/'
+      },
+      'input': {
+        'url': '/input/'
       }
     }
   }
@@ -22,10 +25,12 @@ var AppStore = new Amygdala({
 
 Q.all([
   AppStore.get("channel"),
+  AppStore.get("input"),
 ]).done(makeArgFriendly(setup));
-
-function setup(channelList) {
-  channelList = channelList || [];
+// setup()
+function setup(channels, inputs) {
+  channels = channels || [];
+  inputs = inputs || [];
 
   var App = React.createFactory(React.createClass({
     render: function() {
@@ -33,7 +38,7 @@ function setup(channelList) {
         <div id="app-main">
         <div className="navbar navbar-default">
         <div className="navbar-header">
-        <a className="navbar-brand" href="./">HDX Controller</a>
+        <a className="navbar-brand" href="./">Matrix Construct</a>
         </div>
         </div>
 
@@ -43,7 +48,7 @@ function setup(channelList) {
 
         </div>
         <div className="col-sm-9  col-md-10 main">
-        <ChannelControl store={AppStore} />
+        <ChannelControl store={AppStore} channels={channels} inputs={inputs}/>
         </div>
         </div>
         </div>
